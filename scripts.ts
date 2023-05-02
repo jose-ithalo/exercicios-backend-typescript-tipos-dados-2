@@ -38,7 +38,7 @@ const cadastrarUsuario = (usu: Usuario): string => {
 
     try {
 
-        const listJson: object[] = JSON.parse(fsLibrary.readFileSync('../bd.json'));
+        const listJson: object[] = JSON.parse(fsLibrary.readFileSync('./bd.json'));
 
         listJson.push(usu);
 
@@ -58,7 +58,7 @@ const listarUsuarios = (): object[] | string => {
 
     try {
 
-        const usuarioLista: object[] = JSON.parse(fsLibrary.readFileSync('../bd.json'));
+        const usuarioLista: object[] = JSON.parse(fsLibrary.readFileSync('./bd.json'));
 
         return usuarioLista;
 
