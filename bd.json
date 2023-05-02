@@ -1,0 +1,47 @@
+[
+    {
+        "nome": "Yuri Guimarães",
+        "email": "yuri@gmail.com",
+        "cpf": "741-441-145-21",
+        "profissao": "Designer",
+        "endereco": {
+            "cep": "788-55-789",
+            "rua": "Rua dos Palmares",
+            "bairro": "Bela Vista",
+            "cidade": "Governador Valadares"
+        }
+    },
+    {
+        "nome": "Mariana Ribeiro",
+        "email": "mari@gmail.com",
+        "cpf": "821-5121-178-27",
+        "profissao": "Advogada",
+        "endereco": {
+            "cep": "978-45-411",
+            "rua": "Padre Riera",
+            "bairro": "Jd. Alcântra",
+            "complemento": "Casa B",
+            "cidade": "Goiânia"
+        }
+    },
+    {
+        "nome": "Jasmine Costa",
+        "email": "jany@gmail.com",
+        "cpf": "377-4231-278-38",
+        "profissao": "Secretária",
+        "endereco": null
+    },
+    {
+        "nome": "Matheus Gonçalves",
+        "email": "matheus@hotmail.com",
+        "cpf": "979-5741-164-94",
+        "profissao": "Contador",
+        "endereco": {
+            "cep": "114-77-356",
+            "rua": "Caetano Souza",
+            "bairro": "Jd. Vila Bela",
+            "complemento": "Casa B",
+            "cidade": "São Paulo"
+        }
+    }
+]
