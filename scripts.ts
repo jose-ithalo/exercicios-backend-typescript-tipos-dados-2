@@ -23,7 +23,7 @@ const usuario: Usuario = {
     profissao: 'Contador',
     endereco: {
         cep: '114-77-356',
-        rua: 'Caetano Souza',
+        rua: 'Antônio Cáceres',
         bairro: 'Jd. Vila Bela',
         complemento: 'Casa B',
         cidade: 'São Paulo'
@@ -44,7 +44,7 @@ const cadastrarUsuario = (usu: Usuario): string => {
 
         const usuariosJson: string = JSON.stringify(listJson);
 
-        fsLibrary.writeFileSync('../bd.json', usuariosJson);
+        fsLibrary.writeFileSync('./bd.json', usuariosJson);
 
         return `Usuario ${usu.nome} cadastrado com sucesso.`;
 
@@ -67,5 +67,59 @@ const listarUsuarios = (): object[] | string => {
     }
 }
 
+const detalharUsuario = (cpf: string): Usuario | string => {
+
+    try {
+
+        const usuarioLista: Usuario[] = JSON.parse(fsLibrary.readFileSync('./bd.json'));
+
+        const usuarioEscolhido: Usuario | undefined = usuarioLista.find(usuario => {
+            return usuario.cpf === cpf
+        });
+
+        if (!usuarioEscolhido) {
+            return ('Usuario não encontrado');
+        }
+
+        return usuarioEscolhido;
+
+    } catch (error) {
+        return 'Erro ao procurar Usuário'
+    }
+
+}
+
+const atualizarUsuario = (cpf: string, dados: Usuario): Usuario | string => {
+
+    try {
+
+        const usuarioLista: Usuario[] = JSON.parse(fsLibrary.readFileSync('./bd.json'));
+
+        const usuarioEscolhido: Usuario | undefined = usuarioLista.find(usuario => {
+            return usuario.cpf === cpf
+        });
+
+        if (!usuarioEscolhido) {
+            return ('Usuario não encontrado para atualização');
+        }
+
+        Object.assign(usuarioEscolhido, dados);
+
+        const usuariosJson: string = JSON.stringify(usuarioLista);
+
+        JSON.stringify(fsLibrary.writeFileSync('./bd.json', usuariosJson));
+
+        return dados;
+
+    } catch (error) {
+        return 'Erro ao atualizar Usuário'
+    }
+
+}
+
 // console.log(cadastrarUsuario(usuario));
-console.log(listarUsuarios());
+// console.log(listarUsuarios());
+// console.log(detalharUsuario("741-441-145-21"));
+console.log(atualizarUsuario('979-5741-164-94', usuario));
+
+
