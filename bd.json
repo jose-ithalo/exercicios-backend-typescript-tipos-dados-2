@@ -43,11 +43,5 @@
             "complemento": "Casa B",
             "cidade": "São Paulo"
         }
-    },
-    {
-        "nome": "Ramon Rocha",
-        "email": "elio@hotmail.com",
-        "cpf": "111-1111-111-10",
-        "endereco": ""
     }
 ]

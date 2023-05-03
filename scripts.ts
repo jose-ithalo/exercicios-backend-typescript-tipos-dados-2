@@ -54,11 +54,19 @@ const cadastrarUsuario = (usu: Usuario): string => {
 
 }
 
-const listarUsuarios = (): object[] | string => {
+const listarUsuarios = (profi?: string): object[] | string => {
 
     try {
 
-        const usuarioLista: object[] = JSON.parse(fsLibrary.readFileSync('./bd.json'));
+        const usuarioLista: Usuario[] = JSON.parse(fsLibrary.readFileSync('./bd.json'));
+
+        if (profi) {
+            const profiLista = usuarioLista.filter(usuario => {
+                return usuario.profissao === profi;
+            });
+
+            return profiLista;
+        }
 
         return usuarioLista;
 
@@ -153,4 +161,6 @@ const excluirUsuario = (cpf: string): string => {
 // console.log(detalharUsuario("741-441-145-21"));
 // console.log(atualizarUsuario('979-5741-164-94', usuario));
 // console.log(excluirUsuario("111-1111-111-10"));
+// console.log(filtrarProfissao('designer'));
+
 
