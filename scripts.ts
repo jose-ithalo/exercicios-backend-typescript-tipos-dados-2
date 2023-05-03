@@ -107,7 +107,7 @@ const atualizarUsuario = (cpf: string, dados: Usuario): Usuario | string => {
 
         const usuariosJson: string = JSON.stringify(usuarioLista);
 
-        JSON.stringify(fsLibrary.writeFileSync('./bd.json', usuariosJson));
+        fsLibrary.writeFileSync('./bd.json', usuariosJson);
 
         return dados;
 
@@ -117,9 +117,40 @@ const atualizarUsuario = (cpf: string, dados: Usuario): Usuario | string => {
 
 }
 
+const excluirUsuario = (cpf: string): string => {
+
+    try {
+
+        const usuarioLista: Usuario[] = JSON.parse(fsLibrary.readFileSync('./bd.json'));
+
+        const usuarioEscolhido: Usuario | undefined = usuarioLista.find(usuario => {
+            return usuario.cpf === cpf
+        });
+
+
+        if (!usuarioEscolhido) {
+            return ('Usuario não encontrado');
+        }
+
+        const novaLista = usuarioLista.filter(usuario => {
+            return usuario.cpf !== cpf;
+        });
+
+        const usuariosJson: string = JSON.stringify(novaLista);
+
+        fsLibrary.writeFileSync('./bd.json', usuariosJson);
+
+        return `Usuário ${usuarioEscolhido.nome} excluído com sucesso.`;
+
+    } catch (error) {
+        return 'Erro ao excluir Usuário'
+    }
+}
+
 // console.log(cadastrarUsuario(usuario));
+
 // console.log(listarUsuarios());
 // console.log(detalharUsuario("741-441-145-21"));
-console.log(atualizarUsuario('979-5741-164-94', usuario));
-
+// console.log(atualizarUsuario('979-5741-164-94', usuario));
+// console.log(excluirUsuario("111-1111-111-10"));
 
